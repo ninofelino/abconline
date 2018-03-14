@@ -3,14 +3,15 @@
 @section('content')
 
 <div class="container">
-    Search
-  
-<canvas id="canvas" width="100" height="100"></canvas>
+
     <table id="example"  cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>filename</th>
+                              
+                                               
                 <th>image</th>
+                 <th>image</th>
               
             </tr>
         </thead>
@@ -20,19 +21,7 @@
           
     </table>
 
-  {!! Form::open(array('route' => 'intervention.postresizeimage','files'=>true)) !!}
-        <div class="row">
-        
-            <div class="col-md-6">
-                <br/>
-                {!! Form::file('photo', array('class' => 'form-control')) !!}
-            </div>
-            <div class="col-md-6">
-                <br/>
-                <button type="submit" class="btn btn-primary">Upload Image</button>
-            </div>
-        </div>
-    {!! Form::close() !!}
+ 
 
 </div>
 
@@ -46,21 +35,40 @@ $(document).ready(function() {
         "ajax":'search',
         "columns":[
        
-        {"data":"idproduct","render":function(){return '<img src="images/01.png" height="200">        <button class="btn btn-primary">Upload</button> {!! Form::open(array('route' => 'intervention.postresizeimage','files'=>true)) !!} <div class="row"><div class="col-md-6"> <br/>
-                {!! Form::file('photo', array('class' => 'form-control')) !!}
-            </div>
-            <div class="col-md-6">
-                <br/>
-                <button type="submit" class="btn btn-primary">Upload Image</button>
-            </div>
-        </div>
-    {!! Form::close() !!}
-           <button class="btn btn-primary">Photo</button>'}},
-         {"data":"idproduct"},
-      ]
+        {"data":"filename"},{"data":"idproduct"},{"data":"idproduct"},
+    
+      ],
+      "columnDefs": [
+            {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<a href="search/'+data+'/edit"><img src="images/thumbnail/'+data+'" height="200" /></a>';
+
+                },
+                "targets": 0 // column index 
+             },
+             {
+                // The `data` parameter refers to the data for the cell (defined by the
+                // `data` option, which defaults to the column being worked with, in
+                // this case `data: 0`.
+                "render": function ( data, type, row ) {
+                    return '<a href="search/'+data+'/edit">Edit</a><br>';
+
+                },
+                "targets": 1 // column index 
+             },
+
+           
+
+        ]
+        
+
+
         }
-    	);
-} );	
+        );
+} );    
 </script>
 
 @endsection

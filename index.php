@@ -9,5 +9,5 @@ header("refresh: 5; https://ninofelino.online/laravel/public/");
 
 Freeing you from spaghetti code, Laravel helps you create wonderful applications using simple, expressive syntax. Development should be a creative experience that you enjoy, not something that is painful. Enjoy the fresh air.
 </font></div>';
-'<img src="images/test.jpg">'
+'<img src="logo.png>">'
 ?>

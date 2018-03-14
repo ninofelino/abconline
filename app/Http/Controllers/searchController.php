@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use DataTables;
-
+use App\product;
+use View;
 
 class searchController extends Controller
 {
@@ -17,7 +18,7 @@ class searchController extends Controller
     public function index(Request $request)
     {
         if($request->ajax()){
-             $data=DataTables::of(DB::select('select * from products'))->make(true); 
+             $data=DataTables::of(DB::select('select * from ninw2754_nino.products limit 6000'))->make(true); 
         return $data;
         }
         return view('search');
@@ -34,13 +35,15 @@ class searchController extends Controller
     public function getData()
     {
         //
-             $data=DataTables::of(DB::select('select * from products'))->make(true); 
+             $data=DataTables::of(DB::select('select * from ninw2754_nino.products'))->make(true); 
         return $data;
     }
 
      public function create()
     {
         //
+
+        return view('search.searchCreate');
     }
 
     /**
@@ -52,6 +55,9 @@ class searchController extends Controller
     public function store(Request $request)
     {
         //
+       echo $request->input('name');
+       echo dd($request);
+       //cho var_dump($request);
     }
 
     /**
@@ -63,8 +69,9 @@ class searchController extends Controller
     public function show($id)
     {
         //
-          $data=DataTables::of(DB::select('select * from products'))->make(true); 
-        return $data;
+
+          $data=DataTables::of(DB::select('select * from products '))->make(true); 
+        return view("searchEdit",compact($data));
     }
 
     /**
@@ -75,7 +82,8 @@ class searchController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data=product::find($id);
+        return View::make('searchEdit')->with('data',$data);
     }
 
     /**

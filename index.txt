@@ -1,0 +1,5 @@
+LOAD DATA INFILE ‘/Users/ninofelino/Desktop/INV.csv’ INTO TABLE example FIELDS TERMINATED BY ‘,’ LINES TERMINATED BY ‘\n’ IGNORE 1 LINES (col-2,col-3,col-4) set col-1=null;
+
+
+ brew update && brew install mycli  # Only on macOS
+ mycli -u root -h localhost abconline

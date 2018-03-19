@@ -86,7 +86,11 @@
                 <div class="links">
                     <a href="search">Search</a>
                     
+                </div><div class="links">
+                    <a href="product">product</a>
+                    
                 </div>
+
             </div>
         </div>
     </body>

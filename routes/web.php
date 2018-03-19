@@ -132,3 +132,6 @@ echo DNS1D::getBarcodeSVG("4445645656", "C39");
 
 Route::get('intervention-resizeImage',['as'=>'intervention.getresizeimage','uses'=>'FileController@getResizeImage']);
 Route::post('intervention-resizeImage',['as'=>'intervention.postresizeimage','uses'=>'FileController@postResizeImage']);
+
+Route::resource('post', 'Admin\\PostsController');
+Route::resource('product', 'productController');
